@@ -110,3 +110,41 @@ def schedule(
     except Exception as e:
         print(f"Error: {str(e)}")
         return None
+
+def schedule_multiple_posts(
+    thread_model: BaseModel,
+    websites: List[str],
+    threadify: bool = False,
+    share: bool = True
+) -> None:
+    """Schedule multiple Twitter posts every 12 hours from a list of websites."""
+    try:
+        current_time = datetime.datetime.utcnow()
+        for i, website in enumerate(websites):
+            # Add website to the thread model for customization (assuming this logic exists)
+            thread_model.topic = f"Check out this website: {website}"
+            
+            # Convert Pydantic model to dict
+            thread_json = thread_model.pydantic.model_dump()
+            thread_content = json_to_typefully_content(thread_json)
+            
+            # Calculate schedule time (staggering posts every 12 hours)
+            schedule_date = (current_time + datetime.timedelta(hours=i * 12)).isoformat() + "Z"
+            
+            # Schedule the thread
+            response = schedule_thread(
+                content=thread_content,
+                schedule_date=schedule_date,
+                threadify=threadify,
+                share=share
+            )
+            
+            if response:
+                print(f"Thread for {website} scheduled successfully at {schedule_date}!")
+            else:
+                print(f"Failed to schedule thread for {website}.")
+    
+    except Exception as e:
+        print(f"Error: {str(e)}"
+
+              
