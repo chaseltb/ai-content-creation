@@ -5,7 +5,7 @@ import datetime
 from typing import Optional, Dict, Any
 from pydantic import BaseModel
 
-# API
+# API KEYS
 API_URL = "https://api.typefully.com/v1/drafts/"
 API_KEY = os.getenv("TYPEFULLY_API_KEY")
 HEADERS = {
