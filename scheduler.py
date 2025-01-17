@@ -12,6 +12,8 @@ HEADERS = {
     "X-API-KEY": f"Bearer {API_KEY}"
 }
 
+
+# Typefully needs newlines before the start of a tweet
 def json_to_typefully_content(thread_json: Dict[str, Any]) -> str:
     """Convert JSON thread format to Typefully's format with 4 newlines between tweets."""
     tweets = thread_json['tweets']
@@ -23,6 +25,7 @@ def json_to_typefully_content(thread_json: Dict[str, Any]) -> str:
         formatted_tweets.append(tweet_text)
     
     return '\n\n\n\n'.join(formatted_tweets)
+
 
 def json_to_linkedin_content(thread_json: Dict[str, Any]) -> str:
     """Convert JSON thread format to Typefully's format."""
@@ -58,6 +61,7 @@ def schedule_thread(
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
         return None
+
 
 def schedule(
     thread_model: BaseModel,
@@ -110,6 +114,7 @@ def schedule(
     except Exception as e:
         print(f"Error: {str(e)}")
         return None
+
 
 def schedule_multiple_posts(
     thread_model: BaseModel,
