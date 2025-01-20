@@ -3,4 +3,6 @@ Create content for Twitter and LinkedIn
 
 Crew of AI Agents
 
-https://etherealabs.netlify
+https://etherealabs.netlify.app
+
+
