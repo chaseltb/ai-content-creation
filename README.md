@@ -3,4 +3,4 @@ Create content for Twitter and LinkedIn
 
 Crew of AI Agents
 
-etherea-labs
+etherea-labs.co
